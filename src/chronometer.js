@@ -6,7 +6,7 @@ class Chronometer {
   }
 
   start(printTimeCallback) {
-    if(typeof printTimeCallback!== undefined){
+    if(typeof printTimeCallback!== "undefined"){
       this.intervalId=setInterval(()=> {this.currentTime++;
         printTimeCallback();},1000);
     }
@@ -23,10 +23,10 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     if(value <10){
-      return "0"+value;
+      return `0${value}`;
     }
     else{
-      return value;
+      return `${value}`;
     } 
   }
 
@@ -43,7 +43,7 @@ class Chronometer {
   }
 
 }
-
+/*
 const cron= new Chronometer();
 
 cron.start(()=>{
@@ -52,6 +52,7 @@ cron.start(()=>{
   //console.log(cron.getSeconds());
 
 })
+*/
 
 //setTimeout(()=>{cron.stop()},7000);
 
