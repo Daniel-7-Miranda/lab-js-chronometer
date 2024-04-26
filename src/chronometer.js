@@ -7,22 +7,18 @@ class Chronometer {
 
   start(printTimeCallback) {
     if(typeof printTimeCallback!== undefined){
-      this.intervalId=setInterval(()=> {this.currentTime++,1;
-        printTimeCallback()});
+      this.intervalId=setInterval(()=> {this.currentTime++;
+        printTimeCallback();},1000);
     }
     
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime/60000);
+    return Math.floor(this.currentTime/60);
     }
 
   getSeconds() {
-    return this.currentTime%60000;
-  }
-
-  getCentiseonds(){
-    return this.currentTime/10;
+    return this.currentTime%60;
   }
 
   computeTwoDigitNumber(value) {
@@ -43,6 +39,24 @@ class Chronometer {
   }
 
   split() {
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
+  }
 
-    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds)}:${this.computeTwoDigitNumber(this.getCentiseonds())}}`
 }
+
+const cron= new Chronometer();
+
+cron.start(()=>{
+  console.log(cron.computeTwoDigitNumber(cron.getSeconds()));
+  //console.log(cron.getMinutes());
+  //console.log(cron.getSeconds());
+
+})
+
+//setTimeout(()=>{cron.stop()},7000);
+
+
+
+//console.log(1%60);
+//prom1.then(() => {setTimeout(()=>{cron.reset()},3000)}).then(()=>{cron.start(()=>{console.log(cron.currentTime)})})
+
